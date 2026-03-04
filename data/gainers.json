@@ -1,0 +1,376 @@
+{
+  "last_updated": "2026-03-04 05:43 IST",
+  "total_stocks": 144,
+  "daily": [
+    {
+      "ticker": "COALINDIA",
+      "name": "COALINDIA",
+      "gain_pct": 2.43,
+      "close": 436.6
+    },
+    {
+      "ticker": "BHARTIARTL",
+      "name": "BHARTIARTL",
+      "gain_pct": 1.04,
+      "close": 1892.7
+    },
+    {
+      "ticker": "PERSISTENT",
+      "name": "PERSISTENT",
+      "gain_pct": 0.74,
+      "close": 4708.0
+    },
+    {
+      "ticker": "MPHASIS",
+      "name": "MPHASIS",
+      "gain_pct": 0.53,
+      "close": 2267.5
+    },
+    {
+      "ticker": "TECHM",
+      "name": "TECHM",
+      "gain_pct": 0.47,
+      "close": 1351.7
+    },
+    {
+      "ticker": "ONGC",
+      "name": "ONGC",
+      "gain_pct": 0.28,
+      "close": 283.0
+    },
+    {
+      "ticker": "OFSS",
+      "name": "OFSS",
+      "gain_pct": 0.22,
+      "close": 6863.0
+    },
+    {
+      "ticker": "HAPPSTMNDS",
+      "name": "HAPPSTMNDS",
+      "gain_pct": 0.13,
+      "close": 348.3
+    },
+    {
+      "ticker": "TATAPOWER",
+      "name": "TATAPOWER",
+      "gain_pct": 0.11,
+      "close": 368.75
+    }
+  ],
+  "weekly": [
+    {
+      "ticker": "LTTS",
+      "name": "LTTS",
+      "gain_pct": 7.16,
+      "close": 3374.0
+    },
+    {
+      "ticker": "OFSS",
+      "name": "OFSS",
+      "gain_pct": 6.34,
+      "close": 6863.0
+    },
+    {
+      "ticker": "BEL",
+      "name": "BEL",
+      "gain_pct": 4.31,
+      "close": 453.8
+    },
+    {
+      "ticker": "POLYCAB",
+      "name": "POLYCAB",
+      "gain_pct": 3.12,
+      "close": 8373.5
+    },
+    {
+      "ticker": "MCX",
+      "name": "MCX",
+      "gain_pct": 2.48,
+      "close": 2455.2
+    },
+    {
+      "ticker": "ONGC",
+      "name": "ONGC",
+      "gain_pct": 2.35,
+      "close": 283.0
+    },
+    {
+      "ticker": "HCLTECH",
+      "name": "HCLTECH",
+      "gain_pct": 2.29,
+      "close": 1369.9
+    },
+    {
+      "ticker": "MPHASIS",
+      "name": "MPHASIS",
+      "gain_pct": 2.0,
+      "close": 2267.5
+    },
+    {
+      "ticker": "TIMKEN",
+      "name": "TIMKEN",
+      "gain_pct": 1.92,
+      "close": 3317.4
+    },
+    {
+      "ticker": "AUROPHARMA",
+      "name": "AUROPHARMA",
+      "gain_pct": 1.78,
+      "close": 1185.1
+    },
+    {
+      "ticker": "LUPIN",
+      "name": "LUPIN",
+      "gain_pct": 1.41,
+      "close": 2282.0
+    },
+    {
+      "ticker": "COALINDIA",
+      "name": "COALINDIA",
+      "gain_pct": 1.31,
+      "close": 436.6
+    },
+    {
+      "ticker": "TCS",
+      "name": "TCS",
+      "gain_pct": 1.06,
+      "close": 2601.1
+    },
+    {
+      "ticker": "PERSISTENT",
+      "name": "PERSISTENT",
+      "gain_pct": 0.99,
+      "close": 4708.0
+    },
+    {
+      "ticker": "SCHAEFFLER",
+      "name": "SCHAEFFLER",
+      "gain_pct": 0.89,
+      "close": 4121.0
+    },
+    {
+      "ticker": "DIVISLAB",
+      "name": "DIVISLAB",
+      "gain_pct": 0.86,
+      "close": 6309.0
+    },
+    {
+      "ticker": "VEDL",
+      "name": "VEDL",
+      "gain_pct": 0.82,
+      "close": 700.8
+    },
+    {
+      "ticker": "SUNPHARMA",
+      "name": "SUNPHARMA",
+      "gain_pct": 0.72,
+      "close": 1744.2
+    },
+    {
+      "ticker": "SUNTV",
+      "name": "SUNTV",
+      "gain_pct": 0.7,
+      "close": 592.8
+    },
+    {
+      "ticker": "TECHM",
+      "name": "TECHM",
+      "gain_pct": 0.47,
+      "close": 1351.7
+    },
+    {
+      "ticker": "CIPLA",
+      "name": "CIPLA",
+      "gain_pct": 0.4,
+      "close": 1332.0
+    },
+    {
+      "ticker": "HINDALCO",
+      "name": "HINDALCO",
+      "gain_pct": 0.17,
+      "close": 924.4
+    }
+  ],
+  "monthly": [
+    {
+      "ticker": "POLYCAB",
+      "name": "POLYCAB",
+      "gain_pct": 19.39,
+      "close": 8373.5
+    },
+    {
+      "ticker": "POWERGRID",
+      "name": "POWERGRID",
+      "gain_pct": 15.16,
+      "close": 292.1
+    },
+    {
+      "ticker": "CUMMINSIND",
+      "name": "CUMMINSIND",
+      "gain_pct": 14.26,
+      "close": 4677.8
+    },
+    {
+      "ticker": "SCHAEFFLER",
+      "name": "SCHAEFFLER",
+      "gain_pct": 13.77,
+      "close": 4121.0
+    },
+    {
+      "ticker": "TIMKEN",
+      "name": "TIMKEN",
+      "gain_pct": 12.78,
+      "close": 3317.4
+    },
+    {
+      "ticker": "ASTRAL",
+      "name": "ASTRAL",
+      "gain_pct": 11.08,
+      "close": 1640.2
+    },
+    {
+      "ticker": "SUNPHARMA",
+      "name": "SUNPHARMA",
+      "gain_pct": 10.04,
+      "close": 1744.2
+    },
+    {
+      "ticker": "MOTHERSON",
+      "name": "MOTHERSON",
+      "gain_pct": 10.04,
+      "close": 124.23
+    },
+    {
+      "ticker": "MAXHEALTH",
+      "name": "MAXHEALTH",
+      "gain_pct": 9.55,
+      "close": 1048.2
+    },
+    {
+      "ticker": "TORNTPHARM",
+      "name": "TORNTPHARM",
+      "gain_pct": 9.22,
+      "close": 4296.6
+    },
+    {
+      "ticker": "APOLLOHOSP",
+      "name": "APOLLOHOSP",
+      "gain_pct": 8.93,
+      "close": 7572.0
+    },
+    {
+      "ticker": "VOLTAS",
+      "name": "VOLTAS",
+      "gain_pct": 8.65,
+      "close": 1442.8
+    },
+    {
+      "ticker": "SBIN",
+      "name": "SBIN",
+      "gain_pct": 8.32,
+      "close": 1166.8
+    },
+    {
+      "ticker": "TORNTPOWER",
+      "name": "TORNTPOWER",
+      "gain_pct": 7.71,
+      "close": 1479.3
+    },
+    {
+      "ticker": "ONGC",
+      "name": "ONGC",
+      "gain_pct": 7.7,
+      "close": 283.0
+    },
+    {
+      "ticker": "SUNTV",
+      "name": "SUNTV",
+      "gain_pct": 7.1,
+      "close": 592.8
+    },
+    {
+      "ticker": "FORTIS",
+      "name": "FORTIS",
+      "gain_pct": 6.94,
+      "close": 910.6
+    },
+    {
+      "ticker": "EICHERMOT",
+      "name": "EICHERMOT",
+      "gain_pct": 6.92,
+      "close": 7615.5
+    },
+    {
+      "ticker": "GODREJPROP",
+      "name": "GODREJPROP",
+      "gain_pct": 6.08,
+      "close": 1672.7
+    },
+    {
+      "ticker": "LUPIN",
+      "name": "LUPIN",
+      "gain_pct": 6.0,
+      "close": 2282.0
+    },
+    {
+      "ticker": "DRREDDY",
+      "name": "DRREDDY",
+      "gain_pct": 5.98,
+      "close": 1290.9
+    },
+    {
+      "ticker": "PFC",
+      "name": "PFC",
+      "gain_pct": 5.78,
+      "close": 397.35
+    },
+    {
+      "ticker": "IOC",
+      "name": "IOC",
+      "gain_pct": 5.71,
+      "close": 172.56
+    },
+    {
+      "ticker": "ABB",
+      "name": "ABB",
+      "gain_pct": 4.86,
+      "close": 5849.5
+    },
+    {
+      "ticker": "THERMAX",
+      "name": "THERMAX",
+      "gain_pct": 4.36,
+      "close": 3003.6
+    },
+    {
+      "ticker": "TITAN",
+      "name": "TITAN",
+      "gain_pct": 4.34,
+      "close": 4149.9
+    },
+    {
+      "ticker": "DIVISLAB",
+      "name": "DIVISLAB",
+      "gain_pct": 4.26,
+      "close": 6309.0
+    },
+    {
+      "ticker": "ENDURANCE",
+      "name": "ENDURANCE",
+      "gain_pct": 4.21,
+      "close": 2528.9
+    },
+    {
+      "ticker": "COLPAL",
+      "name": "COLPAL",
+      "gain_pct": 4.01,
+      "close": 2199.0
+    },
+    {
+      "ticker": "NTPC",
+      "name": "NTPC",
+      "gain_pct": 3.87,
+      "close": 367.0
+    }
+  ]
+}
