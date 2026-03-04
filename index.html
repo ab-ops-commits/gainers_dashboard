@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>India Gainers Dashboard</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #0d1117; color: #e6edf3; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+header { background: #161b22; border-bottom: 1px solid #30363d; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; }
+header h1 { font-size: 1.4rem; font-weight: 700; color: #f0f6fc; }
+.subtitle { font-size: 0.85rem; color: #8b949e; margin-top: 2px; }
+.updated { font-size: 0.8rem; color: #8b949e; }
+.container { max-width: 1400px; margin: 0 auto; padding: 24px; }
+.section { margin-bottom: 48px; }
+.section-title { font-size: 1.2rem; font-weight: 700; color: #f0f6fc; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #30363d; display: flex; align-items: center; gap: 8px; }
+.section-title .badge { font-size: 0.75rem; padding: 2px 8px; border-radius: 12px; font-weight: 600; }
+.badge-daily { background: #1f4d2e; color: #3fb950; border: 1px solid #3fb950; }
+.badge-weekly { background: #1a3a5c; color: #58a6ff; border: 1px solid #58a6ff; }
+.badge-monthly { background: #4d2a1f; color: #f78166; border: 1px solid #f78166; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+.card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 14px; cursor: pointer; transition: all 0.2s; text-decoration: none; color: inherit; display: block; }
+.card:hover { border-color: #58a6ff; background: #1c2230; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+.card-ticker { font-size: 0.9rem; font-weight: 700; color: #f0f6fc; margin-bottom: 6px; }
+.card-name { font-size: 0.72rem; color: #8b949e; margin-bottom: 8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.card-gain { font-size: 1.1rem; font-weight: 700; }
+.gain-positive { color: #3fb950; }
+.card-price { font-size: 0.8rem; color: #8b949e; margin-top: 4px; }
+.chart-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 1000; justify-content: center; align-items: center; }
+.chart-modal.active { display: flex; }
+.modal-content { background: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 20px; max-width: 900px; width: 95%; position: relative; }
+.modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+.modal-title { font-size: 1.1rem; font-weight: 700; color: #f0f6fc; }
+.modal-close { background: none; border: none; color: #8b949e; font-size: 1.5rem; cursor: pointer; padding: 4px 8px; border-radius: 4px; }
+.modal-close:hover { background: #30363d; color: #f0f6fc; }
+.modal-img { width: 100%; border-radius: 8px; }
+.loading { text-align: center; padding: 60px; color: #8b949e; font-size: 1rem; }
+.stats-bar { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 16px 24px; margin-bottom: 32px; display: flex; gap: 32px; flex-wrap: wrap; }
+.stat-item { display: flex; flex-direction: column; gap: 2px; }
+.stat-label { font-size: 0.75rem; color: #8b949e; text-transform: uppercase; letter-spacing: 0.5px; }
+.stat-value { font-size: 1rem; font-weight: 700; color: #f0f6fc; }
+@media (max-width: 600px) { .grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); } .stats-bar { gap: 16px; } }
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>India Gainers Dashboard</h1>
+    <div class="subtitle">Top 30 Daily / Weekly / Monthly Gainers — Nifty 500</div>
+  </div>
+  <div class="updated" id="last-updated">Loading...</div>
+</header>
+
+<div class="container">
+  <div class="stats-bar" id="stats-bar">
+    <div class="stat-item"><span class="stat-label">Universe</span><span class="stat-value">Nifty 500</span></div>
+    <div class="stat-item"><span class="stat-label">Top Daily Gainer</span><span class="stat-value" id="top-daily">-</span></div>
+    <div class="stat-item"><span class="stat-label">Top Weekly Gainer</span><span class="stat-value" id="top-weekly">-</span></div>
+    <div class="stat-item"><span class="stat-label">Top Monthly Gainer</span><span class="stat-value" id="top-monthly">-</span></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Daily Gainers <span class="badge badge-daily">1D</span></div>
+    <div class="grid" id="daily-grid"><div class="loading">Loading data...</div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Weekly Gainers <span class="badge badge-weekly">1W</span></div>
+    <div class="grid" id="weekly-grid"><div class="loading">Loading data...</div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Monthly Gainers <span class="badge badge-monthly">1M</span></div>
+    <div class="grid" id="monthly-grid"><div class="loading">Loading data...</div></div>
+  </div>
+</div>
+
+<div class="chart-modal" id="chart-modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <div class="modal-title" id="modal-title">Chart</div>
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+    </div>
+    <img class="modal-img" id="modal-img" src="" alt="Chart" />
+  </div>
+</div>
+
+<script>
+const BASE = 'https://raw.githubusercontent.com/ab-ops-commits/gainers_dashboard/main/data/';
+
+async function loadData() {
+  try {
+    const r = await fetch(BASE + 'gainers.json?t=' + Date.now());
+    if (!r.ok) { showError(); return; }
+    const data = await r.json();
+    document.getElementById('last-updated').textContent = 'Updated: ' + (data.last_updated || 'N/A');
+    renderGrid('daily-grid', data.daily || [], 'daily');
+    renderGrid('weekly-grid', data.weekly || [], 'weekly');
+    renderGrid('monthly-grid', data.monthly || [], 'monthly');
+    if (data.daily && data.daily.length > 0) document.getElementById('top-daily').textContent = data.daily[0].ticker + ' +' + data.daily[0].gain_pct.toFixed(1) + '%';
+    if (data.weekly && data.weekly.length > 0) document.getElementById('top-weekly').textContent = data.weekly[0].ticker + ' +' + data.weekly[0].gain_pct.toFixed(1) + '%';
+    if (data.monthly && data.monthly.length > 0) document.getElementById('top-monthly').textContent = data.monthly[0].ticker + ' +' + data.monthly[0].gain_pct.toFixed(1) + '%';
+  } catch(e) { showError(); }
+}
+
+function showError() {
+  ['daily-grid','weekly-grid','monthly-grid'].forEach(id => {
+    document.getElementById(id).innerHTML = '<div class="loading">Data not yet available. Workflow runs at 4:30 PM IST daily.</div>';
+  });
+  document.getElementById('last-updated').textContent = 'Awaiting first run...';
+}
+
+function renderGrid(gridId, items, period) {
+  const grid = document.getElementById(gridId);
+  if (!items.length) { grid.innerHTML = '<div class="loading">No data available</div>'; return; }
+  grid.innerHTML = items.map((s, i) => `
+    <a class="card" onclick="openChart('${s.ticker}','${period}','${s.ticker} — ${period} chart')" href="#">
+      <div class="card-ticker">#${i+1} ${s.ticker}</div>
+      <div class="card-name">${s.name || ''}</div>
+      <div class="card-gain gain-positive">+${s.gain_pct.toFixed(2)}%</div>
+      <div class="card-price">&#8377;${s.close ? s.close.toFixed(2) : 'N/A'}</div>
+    </a>`).join('');
+}
+
+function openChart(ticker, period, title) {
+  event.preventDefault();
+  document.getElementById('modal-title').textContent = title;
+  document.getElementById('modal-img').src = BASE + 'charts/' + ticker + '_' + period + '.png?t=' + Date.now();
+  document.getElementById('chart-modal').classList.add('active');
+}
+
+function closeModal() {
+  document.getElementById('chart-modal').classList.remove('active');
+  document.getElementById('modal-img').src = '';
+}
+
+document.getElementById('chart-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+
+loadData();
+</script>
+</body>
+</html>
