@@ -18,14 +18,28 @@ header h1 { font-size: 1.4rem; font-weight: 700; color: #f0f6fc; }
 .badge-daily { background: #1f4d2e; color: #3fb950; border: 1px solid #3fb950; }
 .badge-weekly { background: #1a3a5c; color: #58a6ff; border: 1px solid #58a6ff; }
 .badge-monthly { background: #4d2a1f; color: #f78166; border: 1px solid #f78166; }
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
-.card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 14px; cursor: pointer; transition: all 0.2s; text-decoration: none; color: inherit; display: block; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+.card { background: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 16px; cursor: pointer; transition: all 0.2s; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 10px; }
 .card:hover { border-color: #58a6ff; background: #1c2230; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
-.card-ticker { font-size: 0.9rem; font-weight: 700; color: #f0f6fc; margin-bottom: 6px; }
-.card-name { font-size: 0.72rem; color: #8b949e; margin-bottom: 8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.card-gain { font-size: 1.1rem; font-weight: 700; }
-.gain-positive { color: #3fb950; }
-.card-price { font-size: 0.8rem; color: #8b949e; margin-top: 4px; }
+.card-header { display: flex; justify-content: space-between; align-items: flex-start; }
+.ticker-box { display: flex; flex-direction: column; }
+.card-ticker { font-size: 1.1rem; font-weight: 700; color: #f0f6fc; }
+.card-grade { font-size: 0.85rem; font-weight: 700; padding: 2px 6px; border-radius: 4px; background: #30363d; color: #f0f6fc; }
+.grade-A-plus { background: #238636; }
+.grade-A { background: #2ea043; }
+.grade-B { background: #1f6feb; }
+.grade-C { background: #8b949e; }
+.grade-D { background: #da3633; }
+.card-main { display: flex; justify-content: space-between; align-items: center; }
+.card-gain { font-size: 1.4rem; font-weight: 700; color: #3fb950; }
+.card-price { font-size: 0.9rem; color: #8b949e; }
+.metrics-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; background: #0d1117; padding: 10px; border-radius: 8px; border: 1px solid #30363d; }
+.metric-item { display: flex; flex-direction: column; gap: 2px; }
+.metric-label { font-size: 0.65rem; color: #8b949e; text-transform: uppercase; }
+.metric-value { font-size: 0.85rem; font-weight: 600; color: #f0f6fc; }
+.gain-up { color: #3fb950; }
+.gain-down { color: #f85149; }
+.spark-box { height: 30px; width: 100%; margin-top: 4px; }
 .chart-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 1000; justify-content: center; align-items: center; }
 .chart-modal.active { display: flex; }
 .modal-content { background: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 20px; max-width: 900px; width: 95%; position: relative; }
@@ -39,7 +53,6 @@ header h1 { font-size: 1.4rem; font-weight: 700; color: #f0f6fc; }
 .stat-item { display: flex; flex-direction: column; gap: 2px; }
 .stat-label { font-size: 0.75rem; color: #8b949e; text-transform: uppercase; letter-spacing: 0.5px; }
 .stat-value { font-size: 1rem; font-weight: 700; color: #f0f6fc; }
-@media (max-width: 600px) { .grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); } .stats-bar { gap: 16px; } }
 </style>
 </head>
 <body>
@@ -65,12 +78,12 @@ header h1 { font-size: 1.4rem; font-weight: 700; color: #f0f6fc; }
   </div>
 
   <div class="section">
-    <div class="section-title">Weekly Gainers <span class="badge badge-weekly">1W</span></div>
+    <div class="section-title">Weekly Gainers <span class="badge badge-weekly">5D</span></div>
     <div class="grid" id="weekly-grid"><div class="loading">Loading data...</div></div>
   </div>
 
   <div class="section">
-    <div class="section-title">Monthly Gainers <span class="badge badge-monthly">1M</span></div>
+    <div class="section-title">Monthly Gainers <span class="badge badge-monthly">20D</span></div>
     <div class="grid" id="monthly-grid"><div class="loading">Loading data...</div></div>
   </div>
 </div>
@@ -85,6 +98,7 @@ header h1 { font-size: 1.4rem; font-weight: 700; color: #f0f6fc; }
   </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
 const BASE = 'https://raw.githubusercontent.com/ab-ops-commits/gainers_dashboard/main/data/';
 
@@ -105,25 +119,77 @@ async function loadData() {
 
 function showError() {
   ['daily-grid','weekly-grid','monthly-grid'].forEach(id => {
-    document.getElementById(id).innerHTML = '<div class="loading">Data not yet available. Workflow runs at 4:30 PM IST daily.</div>';
+    document.getElementById(id).innerHTML = '<div class="loading">Data not yet available. Workflow is running...</div>';
   });
-  document.getElementById('last-updated').textContent = 'Awaiting first run...';
 }
 
 function renderGrid(gridId, items, period) {
   const grid = document.getElementById(gridId);
   if (!items.length) { grid.innerHTML = '<div class="loading">No data available</div>'; return; }
-  grid.innerHTML = items.map((s, i) => `
-    <a class="card" onclick="openChart('${s.ticker}','${period}','${s.ticker} — ${period} chart')" href="#">
-      <div class="card-ticker">#${i+1} ${s.ticker}</div>
-      <div class="card-name">${s.name || ''}</div>
-      <div class="card-gain gain-positive">+${s.gain_pct.toFixed(2)}%</div>
-      <div class="card-price">&#8377;${s.close ? s.close.toFixed(2) : 'N/A'}</div>
-    </a>`).join('');
+  grid.innerHTML = '';
+  items.forEach((s, i) => {
+    const card = document.createElement('a');
+    card.className = 'card';
+    card.href = '#';
+    card.onclick = (e) => { e.preventDefault(); openChart(s.ticker, period, `${s.ticker} — ${period} chart`); };
+    
+    const dayClass = s.day_pct >= 0 ? 'gain-up' : 'gain-down';
+    const d5Class = s.d5_pct >= 0 ? 'gain-up' : 'gain-down';
+    const d20Class = s.d20_pct >= 0 ? 'gain-up' : 'gain-down';
+    const gradeClass = 'grade-' + s.grade.replace('+', '-plus');
+
+    card.innerHTML = `
+      <div class="card-header">
+        <div class="ticker-box">
+          <span class="card-ticker">#${i+1} ${s.ticker}</span>
+        </div>
+        <span class="card-grade ${gradeClass}">${s.grade}</span>
+      </div>
+      <div class="card-main">
+        <div class="card-gain">+${s.gain_pct.toFixed(2)}%</div>
+        <div class="card-price">&#8377;${s.close.toFixed(2)}</div>
+      </div>
+      <div class="metrics-grid">
+        <div class="metric-item"><span class="metric-label">Day%</span><span class="metric-value ${dayClass}">${s.day_pct.toFixed(2)}%</span></div>
+        <div class="metric-item"><span class="metric-label">ATR%</span><span class="metric-value">${s.atr_pct ? s.atr_pct.toFixed(2) + '%' : '-'}</span></div>
+        <div class="metric-item"><span class="metric-label">5D%</span><span class="metric-value ${d5Class}">${s.d5_pct ? s.d5_pct.toFixed(2) + '%' : '-'}</span></div>
+        <div class="metric-item"><span class="metric-label">20D%</span><span class="metric-value ${d20Class}">${s.d20_pct ? s.d20_pct.toFixed(2) + '%' : '-'}</span></div>
+      </div>
+      <div class="spark-box"><canvas id="spark-${gridId}-${i}"></canvas></div>
+    `;
+    grid.appendChild(card);
+    
+    if (s.rs_vals && s.rs_vals.length > 0) {
+      setTimeout(() => renderSparkline(`spark-${gridId}-${i}`, s.rs_vals), 50);
+    }
+  });
+}
+
+function renderSparkline(canvasId, data) {
+  const ctx = document.getElementById(canvasId).getContext('2d');
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: data.map((_, i) => i),
+      datasets: [{
+        data: data,
+        borderColor: '#58a6ff',
+        borderWidth: 2,
+        pointRadius: 0,
+        fill: false,
+        tension: 0.4
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { enabled: false } },
+      scales: { x: { display: false }, y: { display: false } }
+    }
+  });
 }
 
 function openChart(ticker, period, title) {
-  event.preventDefault();
   document.getElementById('modal-title').textContent = title;
   document.getElementById('modal-img').src = BASE + 'charts/' + ticker + '_' + period + '.png?t=' + Date.now();
   document.getElementById('chart-modal').classList.add('active');
@@ -134,10 +200,7 @@ function closeModal() {
   document.getElementById('modal-img').src = '';
 }
 
-document.getElementById('chart-modal').addEventListener('click', function(e) {
-  if (e.target === this) closeModal();
-});
-
+document.getElementById('chart-modal').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
 document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
 
 loadData();
