@@ -1,0 +1,638 @@
+{
+  "daily": [
+    {
+      "ticker": "COALINDIA",
+      "last_price": 435.25,
+      "daily": 2.11,
+      "weekly": 1.0,
+      "monthly": 0.06
+    },
+    {
+      "ticker": "MASTEK",
+      "last_price": 1582.2,
+      "daily": 1.5,
+      "weekly": 0.93,
+      "monthly": -22.86
+    },
+    {
+      "ticker": "INFY",
+      "last_price": 1307.5,
+      "daily": 1.44,
+      "weekly": 2.51,
+      "monthly": -20.32
+    },
+    {
+      "ticker": "RATNAMANI",
+      "last_price": 2403.8,
+      "daily": 0.75,
+      "weekly": -3.35,
+      "monthly": 8.44
+    },
+    {
+      "ticker": "BHARTIARTL",
+      "last_price": 1885.2,
+      "daily": 0.64,
+      "weekly": -2.87,
+      "monthly": -4.24
+    },
+    {
+      "ticker": "BDL",
+      "last_price": 1275.8,
+      "daily": 0.62,
+      "weekly": 2.88,
+      "monthly": -16.76
+    },
+    {
+      "ticker": "MPHASIS",
+      "last_price": 2269.3,
+      "daily": 0.61,
+      "weekly": 2.08,
+      "monthly": -17.75
+    },
+    {
+      "ticker": "PERSISTENT",
+      "last_price": 4689.2,
+      "daily": 0.34,
+      "weekly": 0.58,
+      "monthly": -22.3
+    },
+    {
+      "ticker": "UBL",
+      "last_price": 1594.6,
+      "daily": 0.3,
+      "weekly": -0.3,
+      "monthly": 8.59
+    },
+    {
+      "ticker": "TECHM",
+      "last_price": 1348.3,
+      "daily": 0.22,
+      "weekly": 0.22,
+      "monthly": -22.65
+    },
+    {
+      "ticker": "INDIGRID",
+      "last_price": 166.4,
+      "daily": 0.08,
+      "weekly": 1.2,
+      "monthly": 3.95
+    },
+    {
+      "ticker": "ONGC",
+      "last_price": 282.4,
+      "daily": 0.07,
+      "weekly": 2.13,
+      "monthly": 7.47
+    },
+    {
+      "ticker": "BEL",
+      "last_price": 454.25,
+      "daily": 0.07,
+      "weekly": 4.41,
+      "monthly": 1.17
+    },
+    {
+      "ticker": "HAPPSTMNDS",
+      "last_price": 348.1,
+      "daily": 0.07,
+      "weekly": -4.05,
+      "monthly": -15.8
+    },
+    {
+      "ticker": "M&MFIN",
+      "last_price": 366.2,
+      "daily": 0.05,
+      "weekly": 0.43,
+      "monthly": -2.49
+    },
+    {
+      "ticker": "KAJARIACER",
+      "last_price": 935.2,
+      "daily": -0.04,
+      "weekly": -1.52,
+      "monthly": 3.63
+    },
+    {
+      "ticker": "IXIGO",
+      "last_price": 166.33,
+      "daily": -0.04,
+      "weekly": 1.17,
+      "monthly": -19.65
+    },
+    {
+      "ticker": "OFSS",
+      "last_price": 6842.0,
+      "daily": -0.09,
+      "weekly": 6.01,
+      "monthly": -11.83
+    },
+    {
+      "ticker": "TATAPOWER",
+      "last_price": 367.8,
+      "daily": -0.15,
+      "weekly": -3.15,
+      "monthly": 0.41
+    },
+    {
+      "ticker": "JUBLFOOD",
+      "last_price": 504.4,
+      "daily": -0.25,
+      "weekly": -2.79,
+      "monthly": 1.48
+    },
+    {
+      "ticker": "YESBANK",
+      "last_price": 20.13,
+      "daily": -0.25,
+      "weekly": -3.31,
+      "monthly": -5.98
+    },
+    {
+      "ticker": "RPOWER",
+      "last_price": 22.92,
+      "daily": -0.26,
+      "weekly": -9.91,
+      "monthly": -18.87
+    },
+    {
+      "ticker": "MAPMYINDIA",
+      "last_price": 1007.3,
+      "daily": -0.27,
+      "weekly": -6.33,
+      "monthly": -23.74
+    },
+    {
+      "ticker": "RAINBOW",
+      "last_price": 1197.1,
+      "daily": -0.28,
+      "weekly": -0.17,
+      "monthly": 5.18
+    },
+    {
+      "ticker": "HCLTECH",
+      "last_price": 1366.9,
+      "daily": -0.3,
+      "weekly": 2.07,
+      "monthly": -19.39
+    },
+    {
+      "ticker": "NILKAMAL",
+      "last_price": 1343.0,
+      "daily": -0.3,
+      "weekly": -3.75,
+      "monthly": -3.44
+    },
+    {
+      "ticker": "DRREDDY",
+      "last_price": 1290.4,
+      "daily": -0.31,
+      "weekly": -0.75,
+      "monthly": 5.94
+    },
+    {
+      "ticker": "NAUKRI",
+      "last_price": 993.9,
+      "daily": -0.46,
+      "weekly": -2.36,
+      "monthly": -20.27
+    },
+    {
+      "ticker": "POLICYBZR",
+      "last_price": 1461.1,
+      "daily": -0.53,
+      "weekly": -2.24,
+      "monthly": -11.69
+    },
+    {
+      "ticker": "SUNPHARMA",
+      "last_price": 1742.3,
+      "daily": -0.58,
+      "weekly": 0.61,
+      "monthly": 9.92
+    }
+  ],
+  "weekly": [
+    {
+      "ticker": "LTTS",
+      "last_price": 3368.4,
+      "daily": -2.17,
+      "weekly": 6.98,
+      "monthly": -9.52
+    },
+    {
+      "ticker": "OFSS",
+      "last_price": 6842.0,
+      "daily": -0.09,
+      "weekly": 6.01,
+      "monthly": -11.83
+    },
+    {
+      "ticker": "NATIONALUM",
+      "last_price": 360.45,
+      "daily": -0.66,
+      "weekly": 5.09,
+      "monthly": -5.31
+    },
+    {
+      "ticker": "BEL",
+      "last_price": 454.25,
+      "daily": 0.07,
+      "weekly": 4.41,
+      "monthly": 1.17
+    },
+    {
+      "ticker": "POLYCAB",
+      "last_price": 8371.5,
+      "daily": -2.07,
+      "weekly": 3.09,
+      "monthly": 19.36
+    },
+    {
+      "ticker": "BDL",
+      "last_price": 1275.8,
+      "daily": 0.62,
+      "weekly": 2.88,
+      "monthly": -16.76
+    },
+    {
+      "ticker": "MAHSEAMLES",
+      "last_price": 548.5,
+      "daily": -0.84,
+      "weekly": 2.74,
+      "monthly": 5.46
+    },
+    {
+      "ticker": "INFY",
+      "last_price": 1307.5,
+      "daily": 1.44,
+      "weekly": 2.51,
+      "monthly": -20.32
+    },
+    {
+      "ticker": "MCX",
+      "last_price": 2449.7,
+      "daily": -2.06,
+      "weekly": 2.25,
+      "monthly": -3.1
+    },
+    {
+      "ticker": "ONGC",
+      "last_price": 282.4,
+      "daily": 0.07,
+      "weekly": 2.13,
+      "monthly": 7.47
+    },
+    {
+      "ticker": "MPHASIS",
+      "last_price": 2269.3,
+      "daily": 0.61,
+      "weekly": 2.08,
+      "monthly": -17.75
+    },
+    {
+      "ticker": "HCLTECH",
+      "last_price": 1366.9,
+      "daily": -0.3,
+      "weekly": 2.07,
+      "monthly": -19.39
+    },
+    {
+      "ticker": "TIMKEN",
+      "last_price": 3314.9,
+      "daily": -1.73,
+      "weekly": 1.84,
+      "monthly": 12.69
+    },
+    {
+      "ticker": "AUROPHARMA",
+      "last_price": 1183.9,
+      "daily": -2.19,
+      "weekly": 1.67,
+      "monthly": -1.97
+    },
+    {
+      "ticker": "LUPIN",
+      "last_price": 2279.2,
+      "daily": -1.38,
+      "weekly": 1.29,
+      "monthly": 5.87
+    },
+    {
+      "ticker": "CLEAN",
+      "last_price": 735.0,
+      "daily": -0.98,
+      "weekly": 1.28,
+      "monthly": -14.42
+    },
+    {
+      "ticker": "INDIGRID",
+      "last_price": 166.4,
+      "daily": 0.08,
+      "weekly": 1.2,
+      "monthly": 3.95
+    },
+    {
+      "ticker": "IXIGO",
+      "last_price": 166.33,
+      "daily": -0.04,
+      "weekly": 1.17,
+      "monthly": -19.65
+    },
+    {
+      "ticker": "SCHAEFFLER",
+      "last_price": 4129.9,
+      "daily": -4.08,
+      "weekly": 1.1,
+      "monthly": 14.02
+    },
+    {
+      "ticker": "COALINDIA",
+      "last_price": 435.25,
+      "daily": 2.11,
+      "weekly": 1.0,
+      "monthly": 0.06
+    },
+    {
+      "ticker": "MASTEK",
+      "last_price": 1582.2,
+      "daily": 1.5,
+      "weekly": 0.93,
+      "monthly": -22.86
+    },
+    {
+      "ticker": "TCS",
+      "last_price": 2597.5,
+      "daily": -0.61,
+      "weekly": 0.92,
+      "monthly": -16.85
+    },
+    {
+      "ticker": "VEDL",
+      "last_price": 700.35,
+      "daily": -3.18,
+      "weekly": 0.76,
+      "monthly": 2.76
+    },
+    {
+      "ticker": "SUNPHARMA",
+      "last_price": 1742.3,
+      "daily": -0.58,
+      "weekly": 0.61,
+      "monthly": 9.92
+    },
+    {
+      "ticker": "PERSISTENT",
+      "last_price": 4689.2,
+      "daily": 0.34,
+      "weekly": 0.58,
+      "monthly": -22.3
+    },
+    {
+      "ticker": "DIVISLAB",
+      "last_price": 6291.0,
+      "daily": -1.76,
+      "weekly": 0.57,
+      "monthly": 3.97
+    },
+    {
+      "ticker": "SUNTV",
+      "last_price": 592.0,
+      "daily": -5.36,
+      "weekly": 0.57,
+      "monthly": 6.96
+    },
+    {
+      "ticker": "M&MFIN",
+      "last_price": 366.2,
+      "daily": 0.05,
+      "weekly": 0.43,
+      "monthly": -2.49
+    },
+    {
+      "ticker": "CIPLA",
+      "last_price": 1331.6,
+      "daily": -1.48,
+      "weekly": 0.37,
+      "monthly": 0.57
+    },
+    {
+      "ticker": "NEOGEN",
+      "last_price": 1349.2,
+      "daily": -2.3,
+      "weekly": 0.23,
+      "monthly": 10.91
+    }
+  ],
+  "monthly": [
+    {
+      "ticker": "EASEMYTRIP",
+      "last_price": 7.79,
+      "daily": -2.5,
+      "weekly": -11.07,
+      "monthly": 23.45
+    },
+    {
+      "ticker": "POLYCAB",
+      "last_price": 8371.5,
+      "daily": -2.07,
+      "weekly": 3.09,
+      "monthly": 19.36
+    },
+    {
+      "ticker": "ENGINERSIN",
+      "last_price": 204.43,
+      "daily": -3.78,
+      "weekly": -5.25,
+      "monthly": 18.53
+    },
+    {
+      "ticker": "KIMS",
+      "last_price": 704.3,
+      "daily": -1.93,
+      "weekly": -4.29,
+      "monthly": 16.65
+    },
+    {
+      "ticker": "WHIRLPOOL",
+      "last_price": 896.95,
+      "daily": -1.9,
+      "weekly": -0.81,
+      "monthly": 15.33
+    },
+    {
+      "ticker": "POWERGRID",
+      "last_price": 291.05,
+      "daily": -1.94,
+      "weekly": -4.51,
+      "monthly": 14.74
+    },
+    {
+      "ticker": "CUMMINSIND",
+      "last_price": 4685.9,
+      "daily": -2.72,
+      "weekly": -4.57,
+      "monthly": 14.46
+    },
+    {
+      "ticker": "SCHAEFFLER",
+      "last_price": 4129.9,
+      "daily": -4.08,
+      "weekly": 1.1,
+      "monthly": 14.02
+    },
+    {
+      "ticker": "TIMKEN",
+      "last_price": 3314.9,
+      "daily": -1.73,
+      "weekly": 1.84,
+      "monthly": 12.69
+    },
+    {
+      "ticker": "SUPREMEIND",
+      "last_price": 3910.0,
+      "daily": -1.12,
+      "weekly": -1.3,
+      "monthly": 11.29
+    },
+    {
+      "ticker": "ASTRAL",
+      "last_price": 1643.0,
+      "daily": -1.6,
+      "weekly": -1.26,
+      "monthly": 11.27
+    },
+    {
+      "ticker": "NEOGEN",
+      "last_price": 1349.2,
+      "daily": -2.3,
+      "weekly": 0.23,
+      "monthly": 10.91
+    },
+    {
+      "ticker": "SUNPHARMA",
+      "last_price": 1742.3,
+      "daily": -0.58,
+      "weekly": 0.61,
+      "monthly": 9.92
+    },
+    {
+      "ticker": "MOTHERSON",
+      "last_price": 123.83,
+      "daily": -3.75,
+      "weekly": -5.88,
+      "monthly": 9.68
+    },
+    {
+      "ticker": "MAXHEALTH",
+      "last_price": 1046.5,
+      "daily": -3.42,
+      "weekly": -3.67,
+      "monthly": 9.38
+    },
+    {
+      "ticker": "TORNTPHARM",
+      "last_price": 4296.1,
+      "daily": -1.67,
+      "weekly": -2.31,
+      "monthly": 9.21
+    },
+    {
+      "ticker": "VOLTAS",
+      "last_price": 1445.5,
+      "daily": -3.58,
+      "weekly": -6.01,
+      "monthly": 8.86
+    },
+    {
+      "ticker": "APOLLOHOSP",
+      "last_price": 7563.0,
+      "daily": -2.93,
+      "weekly": -2.04,
+      "monthly": 8.8
+    },
+    {
+      "ticker": "UBL",
+      "last_price": 1594.6,
+      "daily": 0.3,
+      "weekly": -0.3,
+      "monthly": 8.59
+    },
+    {
+      "ticker": "RATNAMANI",
+      "last_price": 2403.8,
+      "daily": 0.75,
+      "weekly": -3.35,
+      "monthly": 8.44
+    },
+    {
+      "ticker": "TORNTPOWER",
+      "last_price": 1486.6,
+      "daily": -4.39,
+      "weekly": -3.58,
+      "monthly": 8.24
+    },
+    {
+      "ticker": "SBIN",
+      "last_price": 1165.4,
+      "daily": -2.06,
+      "weekly": -4.73,
+      "monthly": 8.19
+    },
+    {
+      "ticker": "ADANIENSOL",
+      "last_price": 966.1,
+      "daily": -0.64,
+      "weekly": -6.85,
+      "monthly": 7.97
+    },
+    {
+      "ticker": "KALYANKJIL",
+      "last_price": 389.1,
+      "daily": -3.15,
+      "weekly": -4.37,
+      "monthly": 7.59
+    },
+    {
+      "ticker": "MFSL",
+      "last_price": 1734.3,
+      "daily": -4.01,
+      "weekly": -5.84,
+      "monthly": 7.48
+    },
+    {
+      "ticker": "ONGC",
+      "last_price": 282.4,
+      "daily": 0.07,
+      "weekly": 2.13,
+      "monthly": 7.47
+    },
+    {
+      "ticker": "EICHERMOT",
+      "last_price": 7623.0,
+      "daily": -2.59,
+      "weekly": -3.86,
+      "monthly": 7.03
+    },
+    {
+      "ticker": "SUNTV",
+      "last_price": 592.0,
+      "daily": -5.36,
+      "weekly": 0.57,
+      "monthly": 6.96
+    },
+    {
+      "ticker": "FORTIS",
+      "last_price": 909.55,
+      "daily": -2.46,
+      "weekly": -1.09,
+      "monthly": 6.82
+    },
+    {
+      "ticker": "NYKAA",
+      "last_price": 252.3,
+      "daily": -2.62,
+      "weekly": -3.47,
+      "monthly": 6.23
+    }
+  ]
+}
