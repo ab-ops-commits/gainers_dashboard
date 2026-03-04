@@ -1,6 +1,7 @@
 import json
 import os
 import yfinance as yf
+import numpy as np
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -39,43 +40,107 @@ TICKERS = [
     'ASTRAL.NS','JKCEMENT.NS','RAMCOCEM.NS','DALBHARAT.NS','SHREECEMT.NS'
 ]
 
+BENCHMARK = '^NSEI'
 TICKERS = list(dict.fromkeys(TICKERS))
 TOP_N = 30
+ATR_PERIOD = 14
+RS_BARS = 20
 
 
 def get_data(tickers):
-    data = yf.download(tickers, period='2mo', interval='1d',
+    all_syms = tickers + [BENCHMARK]
+    data = yf.download(all_syms, period='3mo', interval='1d',
                        group_by='ticker', auto_adjust=True, progress=False)
     return data
 
 
-def compute_returns(data, tickers):
+def calc_atr(df, period=14):
+    high = df['High']
+    low = df['Low']
+    close = df['Close']
+    prev_close = close.shift(1)
+    tr = np.maximum(high - low,
+         np.maximum(abs(high - prev_close), abs(low - prev_close)))
+    atr = tr.rolling(period).mean()
+    return atr
+
+
+def assign_grade(rs_score):
+    if rs_score >= 80:
+        return 'A+'
+    elif rs_score >= 65:
+        return 'A'
+    elif rs_score >= 50:
+        return 'B'
+    elif rs_score >= 35:
+        return 'C'
+    else:
+        return 'D'
+
+
+def compute_records(data, tickers):
+    # Get benchmark close series
+    bench_close = None
+    try:
+        if BENCHMARK in data and not data[BENCHMARK].empty:
+            bench_df = data[BENCHMARK][['Close']].dropna()
+            bench_close = bench_df['Close']
+    except Exception:
+        pass
+
     records = []
     for ticker in tickers:
         try:
             if ticker not in data:
                 continue
-            df = data[ticker][['Close']].dropna()
-            if len(df) < 5:
+            df = data[ticker][['High', 'Low', 'Close']].dropna()
+            if len(df) < 25:
                 continue
             close = df['Close']
             last = float(close.iloc[-1])
-            daily = None
-            weekly = None
-            monthly = None
-            if len(close) >= 2:
-                daily = round((last / float(close.iloc[-2]) - 1) * 100, 2)
-            if len(close) >= 6:
-                weekly = round((last / float(close.iloc[-6]) - 1) * 100, 2)
-            if len(close) >= 23:
-                monthly = round((last / float(close.iloc[-23]) - 1) * 100, 2)
+
+            # Returns
+            day_pct = round((last / float(close.iloc[-2]) - 1) * 100, 2) if len(close) >= 2 else None
+            d5_pct = round((last / float(close.iloc[-6]) - 1) * 100, 2) if len(close) >= 6 else None
+            d20_pct = round((last / float(close.iloc[-21]) - 1) * 100, 2) if len(close) >= 21 else None
+            monthly_pct = round((last / float(close.iloc[-23]) - 1) * 100, 2) if len(close) >= 23 else None
+
+            # ATR%
+            atr_series = calc_atr(df, ATR_PERIOD)
+            atr_val = float(atr_series.iloc[-1]) if not np.isnan(atr_series.iloc[-1]) else None
+            atr_pct = round(atr_val / last * 100, 2) if atr_val and last > 0 else None
+
+            # RS vs benchmark (ratio of stock to benchmark, normalised over RS_BARS)
+            rs_vals = None
+            rs_score = 50
+            if bench_close is not None and len(bench_close) >= RS_BARS:
+                aligned = close.reindex(bench_close.index).dropna()
+                b_aligned = bench_close.reindex(aligned.index).dropna()
+                common_idx = aligned.index.intersection(b_aligned.index)
+                if len(common_idx) >= RS_BARS:
+                    s = aligned[common_idx]
+                    b = b_aligned[common_idx]
+                    ratio = (s / b).iloc[-RS_BARS:]
+                    ratio_norm = ((ratio - ratio.min()) / (ratio.max() - ratio.min() + 1e-10) * 100)
+                    rs_vals = [round(float(v), 1) for v in ratio_norm.values]
+                    rs_score = round(float(ratio_norm.iloc[-1]), 1)
+
+            grade = assign_grade(rs_score)
+
             sym = ticker.replace('.NS', '')
             records.append({
                 'ticker': sym,
                 'close': round(last, 2),
-                'daily': daily,
-                'weekly': weekly,
-                'monthly': monthly
+                'day_pct': day_pct,
+                'daily': day_pct,
+                'd5_pct': d5_pct,
+                'weekly': d5_pct,
+                'd20_pct': d20_pct,
+                'monthly': monthly_pct,
+                'atr_pct': atr_pct,
+                'rs_score': rs_score,
+                'rs_vals': rs_vals if rs_vals else [],
+                'grade': grade
             })
         except Exception as exc:
             print('Error {}: {}'.format(ticker, exc))
@@ -94,7 +159,14 @@ def make_list(top_records, key):
             'ticker': r['ticker'],
             'name': r['ticker'],
             'gain_pct': r[key],
-            'close': r['close']
+            'close': r['close'],
+            'day_pct': r.get('day_pct'),
+            'd5_pct': r.get('d5_pct'),
+            'd20_pct': r.get('d20_pct'),
+            'atr_pct': r.get('atr_pct'),
+            'grade': r.get('grade', 'C'),
+            'rs_score': r.get('rs_score', 50),
+            'rs_vals': r.get('rs_vals', [])
         })
     return result
 
@@ -132,8 +204,8 @@ def main():
     os.makedirs(charts_dir, exist_ok=True)
     print('Fetching data for {} tickers...'.format(len(TICKERS)))
     data = get_data(TICKERS)
-    print('Computing returns...')
-    records = compute_returns(data, TICKERS)
+    print('Computing records...')
+    records = compute_records(data, TICKERS)
     print('Valid records: {}'.format(len(records)))
     daily_top = top30(records, 'daily')
     weekly_top = top30(records, 'weekly')
