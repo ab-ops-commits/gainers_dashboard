@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-30 16:47 IST",
+  "last_updated": "2026-11-02 20:28 IST",
   "total_stocks": 143,
   "daily": [
     {
@@ -652,7 +652,7 @@
       "ticker": "TANLA",
       "name": "TANLA",
       "gain_pct": 1.41,
-      "close": 627.15,
+      "close": 621.15,
       "day_pct": 1.41,
       "d5_pct": 12.56,
       "d20_pct": 27.43,
@@ -1062,7 +1062,7 @@
       "ticker": "TANLA",
       "name": "TANLA",
       "gain_pct": 12.56,
-      "close": 627.15,
+      "close": 621.15,
       "day_pct": 1.41,
       "d5_pct": 12.56,
       "d20_pct": 27.43,
@@ -1878,7 +1878,7 @@
       "ticker": "ROUTE",
       "name": "ROUTE",
       "gain_pct": 5.44,
-      "close": 438.65,
+      "close": 434.65,
       "day_pct": -3.08,
       "d5_pct": 5.44,
       "d20_pct": -1.43,
@@ -2084,7 +2084,7 @@
       "ticker": "TANLA",
       "name": "TANLA",
       "gain_pct": 26.11,
-      "close": 627.15,
+      "close": 621.15,
       "day_pct": 1.41,
       "d5_pct": 12.56,
       "d20_pct": 27.43,
